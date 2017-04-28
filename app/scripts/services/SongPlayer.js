@@ -27,13 +27,27 @@
 			});
 			
 			currentSong = song;
-		}
+		};
 		
+		/**
+		* @function playSong
+		* @desc Plays the song that has been clicked and sets the playing value to true
+		* @param {Object} song
+		*/
+		var playSong = function(song) {
+			currentBuzzObject.play();
+			song.playing = true;
+		};
+		
+		/**
+		* @function play
+		* @desc Plays the song that has been clicked if not already playing or is paused
+		* @param {Object} song
+		*/
 		SongPlayer.play = function(song) {
 			if (currentSong !== song) {
 				setSong(song);
-				currentBuzzObject.play();
-				song.playing = true;
+				playSong(song);
 			} else if (currentSong === song) {
 				if (currentBuzzObject.isPaused()) {
 					currentBuzzObject.play();
@@ -41,6 +55,11 @@
 			}
 		};
 		
+		/**
+		* @function pause
+		* @desc Pauses the song that has been clicked if it is currently playing
+		* @param {Object} song
+		*/
 		SongPlayer.pause = function(song) {
      		currentBuzzObject.pause();
      		song.playing = false;
