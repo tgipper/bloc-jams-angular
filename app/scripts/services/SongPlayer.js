@@ -66,6 +66,15 @@
 		*/
 		SongPlayer.currentTime = null;
 		
+		SongPlayer.volume = 80;
+		
+		SongPlayer.setVolume = function() {
+			if (currentBuzzObject) {
+				currentBuzzObject.setVolume(percentString());
+				console.log(percentString);
+			}
+		}
+		
 		/**
 		* @function play
 		* @desc Plays the song that has been clicked if not already playing or is paused
